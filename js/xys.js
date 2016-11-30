@@ -291,7 +291,47 @@ $(document).ready(function(){
     
     
     
-    
+    //ban
+$(".ls-layer").css("display","none").eq(0).css("display","block");
+var T=setInterval(active,3000);
+var Now=0;
+var Next=0;
+function active(){
+    Next++;
+    if(Next>=$(".ls-layer").length){
+        Next=0;
+    }
+    $(".ls-layer").css("display","none").eq(Next).css("display","block");
+    Now=Next;
+}
+function activeL(){
+    Next--;
+    if(Next<0){
+        Next=$(".ls-layer").length-1;
+    }
+    $(".ls-layer").css("display","none").eq(Next).css("display","block");
+    Now=Next;
+}
+//移入移出
+$("#banslider").mouseover(function(){
+    clearInterval(T);
+    $(".banzf").css("opacity",1);
+    $(".banyf").css("opacity",1);
+})
+$("#banslider").mouseout(function(){
+    T=setInterval(active,3000);
+    $(".banzf").css("opacity",0);
+    $(".banyf").css("opacity",0);
+})
+//点击事件
+$(".banzf").click(function(){
+    activeL();
+})
+$(".banyf").click(function(){
+    active();
+})
+if($(".ls-layer1").css("display")){
+}
     
     
     
